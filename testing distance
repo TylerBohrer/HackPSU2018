@@ -33,18 +33,7 @@ Name: <input type="text" id="myText" value="Mickey">
 
 <button onclick="getRad()">Try it</button>
 
-New Name: <input type="text" id="myNewText" value="Mickey">
 
-
-Name: <input type="text" id="nope"><br>
-
-New Distance 1: <input type="text" id="nope2"><br>
-New Distance 2: <input type="text" id="nope3"><br>
-New Distance 3: <input type="text" id="nope4">
-
-<div>
-	<input type="submit" id="submit">
-</div>
 </div>
 
 <div id="map"></div>
@@ -64,9 +53,6 @@ New Distance 3: <input type="text" id="nope4">
 	  var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 	  directionsDisplay.setMap(map);
 
-	  
-	  //calcRoute();
-	  //document.getElementById('submit').addEventListener('click', function() {
           calcRoute(pos, coord1,coord2,coord3,directionsService, directionsDisplay);
         //});
 	}
@@ -77,8 +63,8 @@ New Distance 3: <input type="text" id="nope4">
 	  var waypts = [position1,position2,position3];
 
 	  var request = {
-        origin: start,//{lat:40.793309199999996 , lng:-77.86912500000001},
-        destination:start,//{lat:40.793309199999996 , lng:-77.86912500000001},
+        origin: start,
+        destination:start,
 		waypoints: waypts,
 		optimizeWaypoints: true,
 		travelMode: 'WALKING'
@@ -132,13 +118,9 @@ New Distance 3: <input type="text" id="nope4">
 			  lng: position.coords.longitude
 			};
 			var pos2 = [position.coords.latitude,position.coords.longitude];
-			document.getElementById('nope').value = [pos2[0],pos2[1]];
 			var newpos1 = goSomeWhere(pos2[0],pos2[1],a,pos,0);
 			var newpos2 = goSomeWhere(pos2[0],pos2[1],a,pos,45);
 			var newpos3 = goSomeWhere(pos2[0],pos2[1],a,pos,-45);
-			document.getElementById('nope2').value = newpos1;
-			document.getElementById('nope3').value = newpos2;
-			document.getElementById('nope4').value = newpos3;
 			
 			var coord1 = {location:{lat: newpos3[0],lng: newpos3[1]}};				
 			var coord2 = {location:{lat: newpos1[0],lng: newpos1[1]}};				
@@ -166,11 +148,10 @@ New Distance 3: <input type="text" id="nope4">
 
 	  var dis = parseInt(document.getElementById('myText').value);
 	  var rad = (((dis/3.14))*1.60934)*.725;// to km // also reduce the length since not going to get a perfect route
-	  document.getElementById('myNewText').value = rad;
 	  init(rad); // convert miles to km to make it easier to do the math
 	}
 </script>
-
+<script src="http://maps.googleapis.com/maps/api/js?sensor=true" type="text/javascript"></script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLeq5PYqVs4OKZEDJSsV1X3-ePPme3Grc&callback=initMap">
     </script>
