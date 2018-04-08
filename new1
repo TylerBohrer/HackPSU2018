@@ -60,7 +60,7 @@ Name: <input type="text" id="myText" value="Mickey">
 	function updateMap(){
 		 navigator.geolocation.getCurrentPosition(function (position) {
 			 initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-			 map.setCenter(initialLocation);
+			 map.panTo(initialLocation);
 		 });
 		
 	}
